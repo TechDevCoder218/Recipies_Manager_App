@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create_recipe</title>
+</head>
+<body>
+    <h1>Add New Recipe</h1>   <br><a href="/dashboard">Back to Dashboard</a><br><br>
+
+    {% with recipe_errors = get_flashed_messages(category_filter=['recipe']) %}
+        {% if recipe_errors %}
+            {% for recipemsg in recipe_errors %}
+                <p>{{recipemsg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+    <form action="/create_new_recipe" method="POST">
+        <br><label for="rname">Recipe Name:</label>
+        <input type="text" name="rname"><br><br>
+        <label for="description">Description: </label>
+        <input type="text" name="description" size="75"><br><br>
+        <label for="instruction" >Instructions: </label>
+        <input type="text" name="instruction" size="75"><br><br>
+        <label for="date_created">Date Made On:</label>
+        <input type="date" id="date_created" name="created_date"><br><br>
+        <label for="yes">Under 30 Minutes: Yes</label>
+        <input type="radio" id="yes" name="max_time" value="Yes">
+        <label for="no">No</label>
+        <input type="radio" id="no" name="max_time" value="No"><br>
+        <br><input type="submit" value="Create">
+    </form><br><br>
+    <form action="/logout" method="POST">
+        <input type="submit" value="logout">
+    </form>
+    </div>
+</body>
+</html>

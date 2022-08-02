@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show_recipe</title>
+</head>
+<body>
+    <h1>Welcome {{ user_fname }}!!!</h1>
+        <table>
+            {% for one_recipe in userinfo.recipes %}
+                <h1>{{ one_recipe.recipe_name }}</h1>
+                <tr><td>Description: {{one_recipe.description}}</td></tr>
+                <tr><td>Under 30 minutes: {{one_recipe.under_max_time}}</td></tr>
+                <tr><td>Instructions: {{one_recipe.instruction}}</td></tr>
+                <tr><td>Date Made: {{one_recipe.created_at}}</td></tr>
+                </tr>
+            {% endfor %}
+        </table>
+    <br><a href="/dashboard">Back to Dashboard</a><br><br>
+    <form action="/logout" method="POST">
+        <input type="submit" value="logout">
+    </form>
+</body>
+</html>
